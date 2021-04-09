@@ -38,3 +38,60 @@ function xTextRefresh() {
 		);
 }
 xTextRefresh();
+
+xText
+  .append("text")
+  .attr("y", -26)
+  .attr("data-name", "poverty")
+  .attr("data-axis", "x")
+  .attr("class", "aText active x")
+  .text("In Poverty (%)");
+
+  xText
+  .append("text")
+  .attr("y", 0)
+  .attr("data-name", "age")
+  .attr("data-axis", "x")
+  .attr("class", "aText inactive x")
+  .text("Age (Median)");
+
+  xText
+  .append("text")
+  .attr("y", 26)
+  .attr("data-name", "income")
+  .attr("data-axis", "x")
+  .attr("class", "aText inactive x")
+  .text("Household income (Median)");
+
+
+var leftTextX = margin + tPadLeft;
+var leftTextY = (height + label) / 2 - label;
+svg.append("g").attr("class", "yText");
+var yText = d3.select(".yText");
+
+function yTextRefresh(){
+	yText.attr(
+		"transform",
+		"translate(" + leftTextX + "," + leftTextY + ")rotate(-90)");
+}
+yTextRefresh();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
