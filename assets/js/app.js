@@ -76,10 +76,33 @@ function yTextRefresh(){
 }
 yTextRefresh();
 
+yText
+  .append("text")
+  .attr("y", -26)
+  .attr("data-name", "obesity")
+  .attr("data-axis", "y")
+  .attr("class", "aText active y")
+  .text("Obese (%)");
 
+  yText
+  .append("text")
+  .attr("x", 0)
+  .attr("data-name", "smokes")
+  .attr("data-axis", "y")
+  .attr("class", "aText inactive y")
+  .text("Smokes (%)");
 
+  yText
+  .append("text")
+  .attr("y", 26)
+  .attr("data-name", "healthcare")
+  .attr("data-axis", "y")
+  .attr("class", "aText inactive y")
+  .text("Lacks Healthcare (%)");
 
-
+d3.csv("assets/data/data.csv").then(function(data){
+	visualize(data);
+});
 
 
 
