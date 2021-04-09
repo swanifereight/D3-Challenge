@@ -105,11 +105,31 @@ d3.csv("assets/data/data.csv").then(function(data){
 });
 
 
+function visualize(theData) {
+	var circX = "poverty";
+	var circY = "obesity";
+}
+
+var Xmin;
+var Xmax;
+var Ymin;
+var Ymax;
 
 
-
-
-
+var toolTip = d3
+.tip()
+.attr("class", "d3-tip")
+.offset([40, -60])
+.html(function(d) {
+	var Xkey
+	var state = "<div>" + d.state + "</div>";
+	if (circX ==="poverty") {
+		Xkey = "<div>" + circX + ":" + d[circX] + "%</div>";
+	}
+	else{
+		
+	}
+})
 
 
 
