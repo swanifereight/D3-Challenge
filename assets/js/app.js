@@ -181,6 +181,8 @@ var Yscale = d3
 .domain([Ymin,Ymax])
 .range([ height - margin - labelArea, margin]);
 
+var Xaxis=d3.axisBottom(Xscale);
+var Yaxis=d3.axisLeft(Yscale);
 
 
 
