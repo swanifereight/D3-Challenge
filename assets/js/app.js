@@ -141,8 +141,22 @@ svg.call(toolTip);
 
 function XminMax() {
 	Xmin = d3.min(theData, function(d){
-		return parseFloat(d[circX]) * 1.10
-	})
+		return parseFloat(d[circX]) * .90;
+	});
+
+	Xmax = d3.max(theData, function(d){
+		return parseFloat(d[circX]) * 1.10;
+	});
+}
+
+function YminMax() {
+	Ymin = d3.min(theData, function(d){
+		return parseFloat(d[circY]) * .90;
+	});
+
+	Ymax = d3.max(theData, function(d){
+		return parseFloat(d[circY]) * 1.10;
+	});
 }
 
 
