@@ -224,7 +224,7 @@ Circles
 })
 .on("mouseover", function(d) {
 	toolTip.show(d, this);
-	d3.select(this).style("stroke", "#323232");
+	d3.select(this).style("stroke", "blue");
 })
 .on("mouseout", function(d){
 	toolTip.hide(d);
@@ -247,7 +247,7 @@ Circles
 .on("mouseover", function(d) {
  toolTip.show(d);
 
-d3.select("." + d.abbr).style("stroke", "#323232");
+d3.select("." + d.abbr).style("stroke", "blue");
     })
 .on("mouseout", function(d) {
 
@@ -255,6 +255,40 @@ toolTip.hide(d);
 
 d3.select("." + d.abbr).style("stroke", "#e3e3e3");
     });
+
+d3.selectAll(".aText").on("click", function() {
+	var self = d3.select(this);
+	if (self.classed("inactive")){
+		var axis = self.attr("data-axis");
+		var name = self.attr("data-name");
+		if (axis === "x") {
+			circX = name;
+			XminMax();
+			Xscale.domain([Xmin, Xmax ]);
+			svg.select(".Xaxis").transition().duration(300).call(Xaxis);
+			
+			d3.selectAll("circle").each(function(){
+				d3
+				.select(this)
+				.transition()
+				.attr("cx", function(d) {
+					return Xscale(d[circX]);
+				})
+				.duration(300);
+			});
+			d3.selectAll(".stateText").each(function() {
+				d3
+				.select(this)
+				.transition()
+				.attr("dx", function(d) {
+					return Xscale(d[circX]);
+				})
+				.duration(300);
+
+			})
+		}
+	}
+})
 
 
 }
