@@ -168,5 +168,46 @@ function labelChange(axis, clickedText) {
 	clickedText.classed("inactive", false).classed("active", true);
 }
 
+XminMax();
+YminMax();
+
+var Xscale = d3
+.scaleLinear()
+.domain([Xmin,Xmax])
+.range([margin + labelArea, width - margin]);
+
+var Yscale = d3
+.scaleLinear()
+.domain([Ymin,Ymax])
+.range([ height - margin - labelArea, margin]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
