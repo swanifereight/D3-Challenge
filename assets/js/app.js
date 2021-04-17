@@ -14,13 +14,13 @@ var svg = d3
 .attr("height", height)
 .attr("class", "chart");
 
-var circle;
+var circleRad;
 function crGet() {
 	if (width <= 530) {
-		circle = 5;
+		circleRad = 5;
 	}
 	else{
-		circle = 10;
+		circleRad = 10;
 	}
 }
 crGet();
@@ -209,6 +209,16 @@ svg
 .attr("class", "Yaxis")
 .attr("transform", "translate(" + (margin +labelArea) + ",0)");
 
+var Circles = svg.selectAll("g Circles").data(theData).enter();
+Circles
+.append("circle")
+.attr("cx", function(d){
+	return Xscale(d[circX]);
+})
+.attr("cy", function(d){
+	return Yscale(d[circY]);
+})
+.attr("r", circleRad)
 
 
 
