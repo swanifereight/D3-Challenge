@@ -121,20 +121,29 @@ var toolTip = d3
 .attr("class", "d3-tip")
 .offset([40, -60])
 .html(function(d) {
-	var Xkey
+	var Xkey;
 	var state = "<div>" + d.state + "</div>";
+	var Ykey = "<div>" + circY + ": " + d[circY] + "%</div>";
 	if (circX ==="poverty") {
 		Xkey = "<div>" + circX + ":" + d[circX] + "%</div>";
 	}
-	else{
-		
+	else{ 
+		Xkey = "<div>" +
+		circX +
+		":" +
+		parseFloat(d[circX]).toLocaleString("en")+
+		"</div>";
+
 	}
-})
+	return state + Xkey + Ykey;
+});
+svg.call(toolTip);
 
-
-
-
-
+function XminMax() {
+	Xmin = d3.min(theData, function(d){
+		return parseFloat(d[circX]) * 1.10
+	})
+}
 
 
 
