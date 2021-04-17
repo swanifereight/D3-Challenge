@@ -285,10 +285,37 @@ d3.selectAll(".aText").on("click", function() {
 				})
 				.duration(300);
 
-			})
+			});
+			labelChange(axis,self);
+		}
+		else{
+			circY = name;
+			YminMax();
+			Yscale.domain([Ymin, Ymax]);
+			svg.select(".Yaxis").transition().duration(300).call(Yaxis);
+			d3.selectAll("circle").each(function() {
+				d3
+				.select(this)
+				.transition()
+				.attr("cy", function(d){
+					return Yscale(d[circY]);
+				})
+				.duration(300);
+			});
+			d3.selectAll(".stateText").each(function() {
+				d3
+				.select(this)
+				.transition()
+				.attr("dy", function(d){
+					return Yscale(d[circY]);
+				})
+				.duration(300);
+			});
+			labelChange(axis,self)
+
 		}
 	}
-})
+});
 
 
 }
