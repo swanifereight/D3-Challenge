@@ -219,10 +219,17 @@ Circles
 	return Yscale(d[circY]);
 })
 .attr("r", circleRad)
-
-
-
-
+.attr("class", function(d) {
+	return "stateCircle" + d.abbr;
+})
+.on("mouseover", function(d) {
+	toolTip.show(d, this);
+	d3.select(this).style("stroke", "#323232");
+})
+.on("mouseout", function(d){
+	toolTip.hide(d);
+	d3.select(this).style("stroke", "#e3e3e3");
+});
 
 
 
