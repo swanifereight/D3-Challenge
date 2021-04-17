@@ -108,7 +108,7 @@ d3.csv("assets/data/data.csv").then(function(data){
 function visualize(theData) {
 	var circX = "poverty";
 	var circY = "obesity";
-}
+
 
 var Xmin;
 var Xmax;
@@ -174,12 +174,12 @@ YminMax();
 var Xscale = d3
 .scaleLinear()
 .domain([Xmin,Xmax])
-.range([margin + labelArea, width - margin]);
+.range([margin + label, width - margin]);
 
 var Yscale = d3
 .scaleLinear()
 .domain([Ymin,Ymax])
-.range([ height - margin - labelArea, margin]);
+.range([ height - margin - label, margin]);
 
 var Xaxis=d3.axisBottom(Xscale);
 var Yaxis=d3.axisLeft(Yscale);
@@ -201,13 +201,13 @@ svg
 .append("g")
 .call(Xaxis)
 .attr("class", "Xaxis")
-.attr("transform", "translate(0," + (height - margin - labelArea) + ")");
+.attr("transform", "translate(0," + (height - margin - label) + ")");
 
 svg
 .append("g")
 .call(Yaxis)
 .attr("class", "Yaxis")
-.attr("transform", "translate(" + (margin +labelArea) + ",0)");
+.attr("transform", "translate(" + (margin +label) + ",0)");
 
 var Circles = svg.selectAll("g Circles").data(theData).enter();
 Circles
@@ -231,9 +231,33 @@ Circles
 	d3.select(this).style("stroke", "#e3e3e3");
 });
 
+Circles
+.append("text")
+.text(function(d) {
+    return d.abbr;
+    })
+.attr("dx", function(d) {
+    return Xscale(d[circX]);
+    })
+.attr("dy", function(d) {
+     return Yscale(d[circY]) + circleRad / 2.5;
+    })
+.attr("font-size", circleRad)
+.attr("class", "stateText")
+.on("mouseover", function(d) {
+ toolTip.show(d);
+
+d3.select("." + d.abbr).style("stroke", "#323232");
+    })
+.on("mouseout", function(d) {
+
+toolTip.hide(d);
+
+d3.select("." + d.abbr).style("stroke", "#e3e3e3");
+    });
 
 
-
+}
 
 
 
