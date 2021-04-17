@@ -184,9 +184,19 @@ var Yscale = d3
 var Xaxis=d3.axisBottom(Xscale);
 var Yaxis=d3.axisLeft(Yscale);
 
+function tickCount(){
+	if (width <= 500) {
+		Xaxis.ticks(5);
+		Yaxis.ticks(5);
+	}
+	else {
+		Xaxis.ticks(10);
+		Yaxis.ticks(10);
 
+	}
+}
 
-
+tickCount();
 
 
 
