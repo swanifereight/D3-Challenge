@@ -195,9 +195,19 @@ function tickCount(){
 
 	}
 }
-
 tickCount();
 
+svg
+.append("g")
+.call(Xaxis)
+.attr("class", "Xaxis")
+.attr("transform", "translate(0," + (height - margin - labelArea) + ")");
+
+svg
+.append("g")
+.call(Yaxis)
+.attr("class", "Yaxis")
+.attr("transform", "translate(" + (margin +labelArea) + ",0)");
 
 
 
