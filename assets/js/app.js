@@ -158,6 +158,15 @@ function YminMax() {
 		return parseFloat(d[circY]) * 1.10;
 	});
 }
+function labelChange(axis, clickedText) {
+	d3
+	.selectAll(".aText")
+	.filter("." + axis)
+	.filter(".active")
+	.classed("active", false)
+	.classed("inactive", true);
+	clickedText.classed("inactive", false).classed("active", true);
+}
 
 
 
